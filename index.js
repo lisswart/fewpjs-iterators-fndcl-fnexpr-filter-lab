@@ -1,16 +1,18 @@
 // Code your solution here
 function findMatching(source, sought) {
-    return source.filter( possibleMatch =>
-      possibleMatch.toLowerCase() === sought.toLowerCase()
-    )
+    return source.filter( function isMatching(possibleMatch) {
+      return possibleMatch.toLowerCase() === sought.toLowerCase();
+  });
+}
+  
+function fuzzyMatch(source, testString) {
+    return source.filter( function isMatching(possibleMatch) {
+      return possibleMatch.toLowerCase().indexOf(testString.toLowerCase()) === 0
+    });
   }
   
-  function fuzzyMatch(source, testString) {
-    return source.filter( possibleMatch =>
-      possibleMatch.toLowerCase().indexOf(testString.toLowerCase()) === 0
-    )
-  }
-  
-  function matchName(source, soughtName) {
-    return source.filter( record => record.name === soughtName)
+function matchName(source, soughtName) {
+    return source.filter( function isMatching(record) { 
+      return record.name === soughtName;
+    });
   }
